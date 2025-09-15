@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: raw_wallmart
+    description: "This is the raw wallmart data source"
+    database: advance-analytics-lab-bianca
+    schema: raw_ecomm_project
+    tables: 
+      - name: raw_wallmart
+        description: "This table contains all the wallmart orders"
+  
+  - name: raw_ecomm
+    description: "This is the raw e-commerce data source"
+    database: advance-analytics-lab-bianca
+    schema: raw_ecomm_project
+    tables: 
+      - name: raw_ecomm
+        description: "This table contains all the e-commerce orders"

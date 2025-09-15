@@ -1,0 +1,167 @@
+version: 2
+
+models:
+  - name: stg_wallmart
+    description: "Staging sources for the e-commerce project"
+    columns:
+      - name: order_id
+        description: "The unique identifier for the order, was originally named transacion_id in raw file"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "The unique identifier for the customer"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The unique identifier for the product"
+        tests:
+          - not_null
+      - name: product_name
+        description: "The name of the product"
+        tests:
+          - not_null
+      - name: category_id
+        description: "The unique identifier for the category, created using md5(category)"
+        tests:
+          - not_null
+      - name: category
+        description: "The name of the category"
+        tests:
+          - not_null
+      - name: quantity_sold
+        description: "The quantity of the product sold"
+        tests:
+          - not_null
+      - name: unit_price
+        description: "The price per unit of the product"
+        tests:
+          - not_null
+      - name: transaction_date
+        description: "The date of the transaction"
+        tests:
+          - not_null
+      - name: store_id
+        description: "The unique identifier for the store"
+        tests:
+          - not_null
+      - name: store_location
+        description: "The location of the store"
+        tests:
+          - not_null
+      - name: country
+        description: "All USA for country"
+        tests:
+          - not_null
+      - name: supplier_id
+        description: "The unique identifier for the supplier"
+        tests:
+          - not_null
+      - name: age_group
+        description: "The age group of the customer"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Teenagers", "Adults", "Senior"]
+      - name: customer_gender
+        description: "The gender of the customer"
+        tests:
+          - not_null
+      - name: payment_method
+        description: "The method of payment used"
+        tests:
+          - not_null
+      - name: weekday
+        description: "The day of the week the transaction occurred"
+        tests:
+          - not_null
+      - name: order_status
+        description: "All In_Shop as bought at Wallmart"
+        tests:
+          - accepted_values:
+              values: ["In_Shop"]
+  
+  - name: stg_ecomm
+    description: "Staging sources for the e-commerce project"
+    columns:
+      - name: order_id
+        description: "The unique identifier for the order, was originally named order_number in raw file"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "The unique identifier for the customer"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The unique identifier for the product"
+        tests:
+          - not_null
+      - name: product_name
+        description: "The name of the product"
+        tests:
+          - not_null
+      - name: category_id
+        description: "The unique identifier for the category, created using md5(category)"
+        tests:
+          - not_null
+      - name: category  
+        description: "The name of the category"
+        tests:
+          - not_null
+      - name: quantity_sold
+        description: "The quantity of the product sold"
+        tests:
+          - not_null
+      - name: unit_price
+        description: "The price per unit of the product"
+        tests:
+          - not_null
+      - name: order_date  
+        description: "The date of the order"
+        tests:
+          - not_null
+      - name: store_id
+        description: "The unique identifier for the store - all are Online_001" 
+        tests:
+          - not_null   
+      - name: store_location
+        description: "The location of the store - all are Online"
+        tests:
+          - not_null
+      - name: country
+        description: "The country the order was purchased in"
+        tests:
+          - not_null    
+      - name: supplier_id
+        description: "The unique identifier for the supplier - All Unknown"
+        tests:
+          - not_null
+      - name: age_group
+        description: "The age group of the customer"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Teenagers", "Adults", "Senior"]
+      - name: customer_gender
+        description: "The gender of the customer"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Male", "Female", "Other"]
+      - name: payment_method
+        description: "The method of payment used"
+        tests:
+          - not_null
+          - accepted_values:  
+              values: ["Credit Card", "PayPal", "Cash on Delivery"]
+      - name: weekday
+        description: "The day of the week the order was placed"
+        tests:
+          - not_null
+      - name: order_status
+        description: "The status of the order"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Delivered", "Shipped", "Cancelled", "Pending", "Returned"]
