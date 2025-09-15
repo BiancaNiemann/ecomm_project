@@ -5,16 +5,16 @@ models:
     description: "Staging sources for the e-commerce project"
     columns:
       - name: order_id
-        description: "The unique identifier for the order, was originally named transacion_id in raw file"
+        description: "The unique identifier for the order, was originally named transaction_id in raw file, added 'ORDW' to distinguish from ecomm order_id and to make it string value"
         tests:
           - not_null
           - unique
       - name: customer_id
-        description: "The unique identifier for the customer"
+        description: "The unique identifier for the customer, was originally named customer_id in raw file, added 'CUSTW' to distinguish from ecomm customer_id and to make it string value"
         tests:
           - not_null
       - name: product_id
-        description: "The unique identifier for the product"
+        description: "The unique identifier for the product, was originally named product_id in raw file, added 'PRODW' to distinguish from ecomm product_id and to make it string value"
         tests:
           - not_null
       - name: product_name
@@ -54,7 +54,7 @@ models:
         tests:
           - not_null
       - name: supplier_id
-        description: "The unique identifier for the supplier"
+        description: "The unique identifier for the supplier, added 'SUPPW' to distinguish from ecomm supplier_id and to make it string value"
         tests:
           - not_null
       - name: age_group
@@ -65,6 +65,10 @@ models:
               values: ["Teenagers", "Adults", "Senior"]
       - name: customer_gender
         description: "The gender of the customer"
+        tests:
+          - not_null
+      - name: payment_method_id
+        description: "Created a payment_id code using md5(payment_method)"
         tests:
           - not_null
       - name: payment_method
@@ -149,6 +153,10 @@ models:
           - not_null
           - accepted_values:
               values: ["Male", "Female", "Other"]
+      - name: payment_method_id
+        description: "Created a payment_id code using md5(payment_method)"
+        tests:
+          - not_null
       - name: payment_method
         description: "The method of payment used"
         tests:
