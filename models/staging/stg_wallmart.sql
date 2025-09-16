@@ -1,22 +1,22 @@
 select 
-    CONCAT('ORDW',transaction_id) AS order_id,
-    CONCAT('CUSTW',customer_id) AS customer_id,
-    CONCAT('PRODW',product_id) AS product_id,
+    'ORDW' || transaction_id as order_id,
+    'CUSTW' || customer_id as customer_id,
+    'PRODW' || product_id as product_id,
     product_name,
     category,
     quantity_sold,
-    CAST(unit_price as numeric) AS unit_price,
-    DATE(transaction_date) AS order_date,
-    CONCAT('STORW',store_id) AS store_id,
+    cast(unit_price as numeric) as unit_price,
+    date(transaction_date) as order_date,
+    'STORW' || store_id as store_id,
     store_location,
-    'USA' AS country,
-    CONCAT('SUPPW',supplier_id) AS supplier_id,
-    CASE
-        WHEN customer_age < 19 THEN 'Teenagers'
-        WHEN customer_age BETWEEN 19 AND 59 THEN 'Adults'
-        WHEN customer_age > 59 THEN 'Senior'
-    END AS age_group,
+    'USA' as country,
+    'SUPPW' || supplier_id as supplier_id,
+    case
+        when customer_age < 19 then 'Teenagers'
+        when customer_age between 19 and 59 then 'Adults'
+        when customer_age > 59 then 'Senior'
+    end as age_group,
     customer_gender,
     payment_method,
-    'In_Shop' AS order_status
+    'In_Shop' as order_status
 from {{ source('raw_wallmart', 'raw_wallmart')}}

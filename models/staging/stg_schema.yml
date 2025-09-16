@@ -21,10 +21,6 @@ models:
         description: "The name of the product"
         tests:
           - not_null
-      - name: category_id
-        description: "The unique identifier for the category, created using md5(category)"
-        tests:
-          - not_null
       - name: category
         description: "The name of the category"
         tests:
@@ -37,8 +33,8 @@ models:
         description: "The price per unit of the product"
         tests:
           - not_null
-      - name: transaction_date
-        description: "The date of the transaction"
+      - name: order_date
+        description: "The date of the order"
         tests:
           - not_null
       - name: store_id
@@ -62,28 +58,22 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ["Teenagers", "Adults", "Senior"]
+              arguments:
+                values: ["Teenagers", "Adults", "Senior"]
       - name: customer_gender
         description: "The gender of the customer"
-        tests:
-          - not_null
-      - name: payment_method_id
-        description: "Created a payment_id code using md5(payment_method)"
         tests:
           - not_null
       - name: payment_method
         description: "The method of payment used"
         tests:
           - not_null
-      - name: weekday
-        description: "The day of the week the transaction occurred"
-        tests:
-          - not_null
       - name: order_status
         description: "All In_Shop as bought at Wallmart"
         tests:
           - accepted_values:
-              values: ["In_Shop"]
+              arguments:
+                values: ["In_Shop"]
   
   - name: stg_ecomm
     description: "Staging sources for the e-commerce project"
@@ -103,10 +93,6 @@ models:
           - not_null
       - name: product_name
         description: "The name of the product"
-        tests:
-          - not_null
-      - name: category_id
-        description: "The unique identifier for the category, created using md5(category)"
         tests:
           - not_null
       - name: category  
@@ -146,30 +132,26 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ["Teenagers", "Adults", "Senior"]
+              arguments:
+                values: ["Teenagers", "Adults", "Senior"]
       - name: customer_gender
         description: "The gender of the customer"
         tests:
           - not_null
           - accepted_values:
-              values: ["Male", "Female", "Other"]
-      - name: payment_method_id
-        description: "Created a payment_id code using md5(payment_method)"
-        tests:
-          - not_null
+              arguments:
+                values: ["Male", "Female", "Other"]
       - name: payment_method
         description: "The method of payment used"
         tests:
           - not_null
-          - accepted_values:  
-              values: ["Credit Card", "PayPal", "Cash on Delivery"]
-      - name: weekday
-        description: "The day of the week the order was placed"
-        tests:
-          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Credit Card", "PayPal", "Cash on Delivery"]
       - name: order_status
         description: "The status of the order"
         tests:
           - not_null
           - accepted_values:
+              arguments:
               values: ["Delivered", "Shipped", "Cancelled", "Pending", "Returned"]
