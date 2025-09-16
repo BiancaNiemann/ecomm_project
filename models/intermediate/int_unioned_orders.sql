@@ -6,9 +6,8 @@ with base as (
 select 
     order_id,
     customer_id,
-    product_id,
+    md5(product_name) AS product_id,
     product_name,
-    md5(category) AS category_id,
     category,
     quantity_sold,
     unit_price,

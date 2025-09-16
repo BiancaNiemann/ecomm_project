@@ -1,7 +1,6 @@
 select
     order_id,
     customer_id,
-    product_id,
     product_name,
     category,
     quantity as quantity_sold,

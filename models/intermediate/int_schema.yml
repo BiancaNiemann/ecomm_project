@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: int_unioned_orders
+    description: "Intermediate model for unioned orders from wallmart and ecomm sources"
+    columns:
+      - name: order_id
+        description: "The unique identifier for the order"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "The unique identifier for the customer"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The unique identifier for the product, created using md5 as original ID's in raw file not correct"
+        tests:
+          - not_null  
+      - name: product_name
+        description: "The name of the product"
+        tests:
+          - not_null
+      - name: category
+        description: "The name of the category"
+        tests:
+          - not_null
+      - name: quantity_sold
+        description: "The quantity of the product sold"
+        tests:
+          - not_null
+      - name: unit_price
+        description: "The price per unit of the product"
+        tests:
+          - not_null
+      - name: order_date_id
+        description: "The date of the order in integer format YYYYMMDD"
+        tests:
+          - not_null
+      - name: order_date
+        description: "The date of the order"
+        tests:
+          - not_null
+      - name: store_id
+        description: "The unique identifier for the store"
+        tests:
+          - not_null
+      - name: store_location
+        description: "The location of the store"
+        tests:
+          - not_null    
+      - name: customer_country
+        description: "The country of the customer"
+        tests:
+          - not_null
+      - name: age_group
+        description: "The age group of the customer"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Teenagers", "Adults", "Senior"] 
+      - name: customer_gender
+        description: "The gender of the customer"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Male", "Female", "Other"]
+      - name: payment_method_id
+        description: "The payment method identifier"
+        tests:
+          - not_null
+      - name: payment_method
+        description: "The payment method used for the order"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Credit Card", "PayPal", "Gift Card"]
+      - name: order_status_id
+        description: "The order status identifier"
+        tests:
+          - not_null
+      - name: order_status
+        description: "The status of the order"
+        tests:
+          - not_null
+  

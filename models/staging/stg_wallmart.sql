@@ -1,9 +1,17 @@
 select 
     'ORDW' || transaction_id as order_id,
     'CUSTW' || customer_id as customer_id,
-    'PRODW' || product_id as product_id,
     product_name,
-    category,
+    CASE 
+        WHEN product_name = 'Fridge' THEN 'Appliances'
+        WHEN product_name = 'Headphones' THEN 'Electronics'
+        WHEN product_name = 'Camera' THEN 'Electronics'
+        WHEN product_name = 'Smartphone' THEN 'Electronics'
+        WHEN product_name = 'TV' THEN 'Electronics'
+        WHEN product_name = 'Tablet' THEN 'Computers'       
+        WHEN product_name = 'Laptop' THEN 'Computers'
+        WHEN product_name = 'Washing Machine' THEN 'Appliances'
+    END AS category,
     quantity_sold,
     cast(unit_price as numeric) as unit_price,
     date(transaction_date) as order_date,

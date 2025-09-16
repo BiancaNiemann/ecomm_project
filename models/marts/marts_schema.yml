@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "Dimension table for products"
+    columns:
+      - name: product_id
+        description: "The unique identifier for the product"
+        tests:
+          - not_null
+          - unique
+      - name: product_name
+        description: "The name of the product"
+        tests:
+          - not_null
+      - name: category_id
+        description: "The unique identifier for the category, created using md5"
+        tests:
+          - not_null
+          - unique
+      - name: category
+        description: "The name of the category"
+        tests:
+          - not_null
+  
+  - name: fact_orders 
+    description: "Fact table for orders"
+    columns:
+      - name: order_id
+        description: "The unique identifier for the order"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "The unique identifier for the customer"
+        tests:
+          - not_null
+      - name: product_id
+        description: "The unique identifier for the product"
+        tests:
+          - not_null
+      - name: quantity_sold
+        description: "The quantity of the product sold"
+        tests:
+          - not_null
+      - name: unit_price
+        description: "The price per unit of the product"
+        tests:
+          - not_null
+      - name: order_date_id
+        description: "The date of the order in integer format YYYYMMDD"
+        tests:
+          - not_null
+      - name: store_id
+        description: "The unique identifier for the store"
+        tests:
+          - not_null
+      - name: order_status_id
+        description: "The status of the order, created using md5"
+        tests:
+          - not_null
+      - name: total_price
+        description: "The total price of the order, calculated as quantity_sold * unit_price"
+        tests:
+          - not_null

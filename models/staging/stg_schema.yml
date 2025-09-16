@@ -13,10 +13,6 @@ models:
         description: "The unique identifier for the customer, was originally named customer_id in raw file, added 'CUSTW' to distinguish from ecomm customer_id and to make it string value"
         tests:
           - not_null
-      - name: product_id
-        description: "The unique identifier for the product, was originally named product_id in raw file, added 'PRODW' to distinguish from ecomm product_id and to make it string value"
-        tests:
-          - not_null
       - name: product_name
         description: "The name of the product"
         tests:
