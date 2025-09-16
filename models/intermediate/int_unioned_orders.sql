@@ -13,7 +13,7 @@ select
     unit_price,
     cast(format_date('%Y%m%d', order_date) as int64) as order_date_id,
     order_date,
-    store_id,
+    md5(store_location) AS store_id,
     store_location,
     country AS customer_country,
     age_group,

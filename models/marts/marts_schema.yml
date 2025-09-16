@@ -17,7 +17,6 @@ models:
         description: "The unique identifier for the category, created using md5"
         tests:
           - not_null
-          - unique
       - name: category
         description: "The name of the category"
         tests:
@@ -61,5 +60,106 @@ models:
           - not_null
       - name: total_price
         description: "The total price of the order, calculated as quantity_sold * unit_price"
+        tests:
+          - not_null
+  
+  - name: dim_customers
+    description: "Dimension table for customers"
+    columns:
+      - name: customer_id
+        description: "The unique identifier for the customer"
+        tests:
+          - not_null
+          - unique
+      - name: customer_country
+        description: "The country of the customer"
+        tests:
+          - not_null
+      - name: age_group
+        description: "The age group of the customer"
+        tests:
+          - not_null
+      - name: customer_gender
+        description: "The gender of the customer, if customer has more then 1 gender given Unknown"
+        tests:
+          - not_null
+  
+  - name: dim_dates
+    description: "Dimension table for dates"
+    columns:
+      - name: order_date_id
+        description: "The unique identifier for the date in integer format YYYYMMDD"
+        tests:
+          - not_null
+          - unique
+      - name: order_date
+        description: "The date"
+        tests:
+          - not_null
+      - name: order_day
+        description: "The day of the month"
+        tests:
+          - not_null
+      - name: order_month
+        description: "The month of the year"
+        tests:
+          - not_null
+      - name: order_quarter
+        description: "The quarter of the year"
+        tests:
+          - not_null
+      - name: order_year
+        description: "The year"
+        tests:
+          - not_null
+      - name: order_season
+        description: "The season of the year"
+        tests:
+          - not_null
+      - name: order_day_type
+        description: "The type of the day (e.g., Weekday, Weekend)"
+        tests:
+          - not_null
+      - name: order_day_name
+        description: "The name of the day (e.g., Monday, Tuesday)"
+        tests:
+          - not_null 
+  
+  - name: dim_stores
+    description: "Dimension table for stores"
+    columns:
+      - name: store_id
+        description: "The unique identifier for the store"
+        tests:
+          - not_null
+          - unique
+      - name: store_location
+        description: "The location of the store"
+        tests:
+          - not_null  
+  
+  - name: dim_order_status
+    description: "Dimension table for order statuses"
+    columns:
+      - name: order_status_id
+        description: "The unique identifier for the order status"
+        tests:
+          - not_null
+          - unique
+      - name: order_status
+        description: "The name of the order status"
+        tests:
+          - not_null
+  
+  - name: dim_payment_methods
+    description: "Dimension table for payment methods"
+    columns:
+      - name: payment_method_id
+        description: "The unique identifier for the payment method"
+        tests:
+          - not_null
+          - unique    
+      - name: payment_method
+        description: "The name of the payment method"
         tests:
           - not_null

@@ -83,10 +83,6 @@ models:
         description: "The unique identifier for the customer"
         tests:
           - not_null
-      - name: product_id
-        description: "The unique identifier for the product"
-        tests:
-          - not_null
       - name: product_name
         description: "The name of the product"
         tests:

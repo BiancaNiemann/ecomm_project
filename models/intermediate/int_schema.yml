@@ -77,7 +77,7 @@ models:
           - not_null
           - accepted_values:
               arguments:
-                values: ["Credit Card", "PayPal", "Gift Card"]
+                values: ["Credit Card", "PayPal", "Gift Card", "Cash on Delivery", "Cash", "Digital Wallet", "Debit Card"]
       - name: order_status_id
         description: "The order status identifier"
         tests:
