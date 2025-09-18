@@ -6,7 +6,7 @@ select
     product_id,
     quantity_sold,
     unit_price,
-    quantity_sold * unit_price AS total_price,
+    {{ calculate_revenue('unit_price', 'quantity_sold') }} AS total_price,
     order_date_id,
     store_id,
     order_status_id,
