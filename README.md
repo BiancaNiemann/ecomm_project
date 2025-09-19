@@ -15,3 +15,5 @@ Try running the following commands:
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
 
 ##### export DBT_KEYFILE=/Users/biancaniemann/keys/advance-analytics-lab-bianca-7a1fa337075b.json
+
+https://lookerstudio.google.com/s/nqUZ0rxwTus
